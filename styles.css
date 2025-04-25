@@ -1,7 +1,7 @@
 :root {
     --primary: #000000;
     --secondary: #ffffff;
-    width: 800px;
+    width: 1500px;
     margin: auto;
     --accent:  rgb(118, 86, 204);
     --shadow: 4px 4px 0px var(--primary);
@@ -257,7 +257,8 @@ body {
 /* Projects Tab Styles */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
     gap: 20px;
 }
 
@@ -357,4 +358,98 @@ body {
     .project-grid {
         grid-template-columns: 1fr;
     }
+}
+
+
+
+
+/* Header Styles */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    margin: 20px 0;
+}
+
+.theme-toggle {
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+/* Marquee (Hidden in Light Mode) */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 10px;
+    opacity: 0;
+    height: 0;
+    transition: all 0.3s ease;
+}
+
+.marquee-container.visible {
+    opacity: 1;
+    height: auto;
+    background-color: var(--secondary);
+    border: var(--border);
+    box-shadow: var(--shadow);
+}
+
+.marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 12s linear infinite; /* Faster speed (12s) */
+    padding: 10px 0;
+    width: 100%;
+}
+
+.marquee span {
+    margin-right: 40px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+/* Dark Mode Styles */
+.dark-mode {
+    --primary: #ffffff;
+    --secondary: #121212;
+    --accent: #ff6b81;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode .card,
+.dark-mode .accordion-item,
+.dark-mode .alert,
+.dark-mode .button,
+.dark-mode .project-card,
+.dark-mode .skill-item {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-mode .label {
+    color: var(--accent);
+}
+
+
+/* Animation */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
